@@ -19,6 +19,7 @@ func NewUserRepo(db *sql.DB) storage.IUserStorage {
 	}
 }
 
+//create
 func (u userRepo) Create(createUser models.CreateUser) (models.User, error) {
 
 	uid := uuid.New()
@@ -40,7 +41,23 @@ func (u userRepo) Create(createUser models.CreateUser) (models.User, error) {
 	return models.User{}, nil
 }
 
-func (u userRepo) GetByID(models.PrimaryKey) (models.User, error) {
+//getbyid
+func (u userRepo) GetByID(rex models.PrimaryKey) (models.User, error) {
+	id := rex.ID
+	row := u.db.QueryRow(`select * from users where id=$1`, id)
+	users := models.User{}
+	if err := row.Scan(
+		&users.ID,
+		&users.FullName,
+		&users.Phone,
+		&users.Password,
+		&users.UserType,
+		&users.Cash,
+	); err != nil {
+		fmt.Println("error while getbyid data", err.Error())
+		return models.User{}, err
+	}
+
 	return models.User{}, nil
 }
 
@@ -53,7 +70,13 @@ func (u userRepo) Update(models.UpdateUser) (models.User, error) {
 	return models.User{}, nil
 }
 
-func (u userRepo) Delete(models.PrimaryKey) error {
-
+//delete
+func (u userRepo) Delete(rex models.PrimaryKey) error {
+	id := rex.ID
+	fmt.Println(id)
+	_, err := u.db.Exec(`delete from users where id=$1`, id)
+	if err != nil {
+		return err
+	}
 	return nil
 }
