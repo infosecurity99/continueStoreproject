@@ -35,3 +35,24 @@ func (s Store) User() storage.IUserStorage {
 
 	return newUser
 }
+func (s Store) Categories() storage.ICategoriesStorage {
+	newCategories := NewCategoryRepo(s.DB)
+
+	return newCategories
+}
+func (s Store) Products() storage.IProductsStorage {
+	newProducts := NewProductRepo(s.DB)
+
+	return newProducts
+}
+func (s Store) Basket() storage.IBasketsStorage {
+	newBasket := NewBasketRepo(s.DB)
+
+	return newBasket
+}
+/*
+func (s Store) BasketProducts() storage.IBasketProductsStorage {
+	newBasketProducts := NewBasketProductRepo(s.DB)
+
+	return newBasketProducts
+}*/

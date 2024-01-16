@@ -22,6 +22,9 @@ func main() {
 	con := controller.New(store)
 
 	http.HandleFunc("/user", con.User)
+	http.HandleFunc("/categories", con.Categories)
+	http.HandleFunc("/products", con.Products)
+	http.HandleFunc("/basket", con.Baskets)
 
 	fmt.Println("listening at port :8080")
 	http.ListenAndServe(":8080", nil)
