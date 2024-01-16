@@ -25,7 +25,8 @@ func main() {
 	http.HandleFunc("/categories", con.Categories)
 	http.HandleFunc("/products", con.Products)
 	http.HandleFunc("/basket", con.Baskets)
-
+	http.HandleFunc("/basketproduct", con.BasketProducts)
+	
 	fmt.Println("listening at port :8080")
 	http.ListenAndServe(":8080", nil)
 }

@@ -28,3 +28,7 @@ type BasketProductsResponse struct {
 	BasketProducts []BasketProduct `json:"basket_products"`
 	Count          int             `json:"count"`
 }
+type UpdateBasketProduct struct {
+	ID       uuid.UUID `json:"id"`
+	Quantity int       `json:"quantity"`
+}

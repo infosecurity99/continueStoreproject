@@ -8,7 +8,7 @@ type IStorage interface {
 	Categories() ICategoriesStorage
 	Products() IProductsStorage
 	Basket() IBasketsStorage
-	//BasketProduct() IBasketProductsStorage
+	BasketProduct() IBasketProductsStorage
 }
 
 //users  interface
@@ -48,10 +48,11 @@ type IBasketsStorage interface {
 }
 
 //basket_product
-/*
+
 type IBasketProductsStorage interface {
-  Create(models.CreateBasketProduct) (models.BasketProduct, error)
-  GetByID(models.PrimaryKeysBasketProducts) (models.BasketProduct, error)
-  GetList(models.GetListRequestBasketProducts) (models.BasketProductsResponse, error)
-  Update(models.BasketProduct)
-}*/
+	Create(models.CreateBasketProduct) (models.BasketProduct, error)
+	GetByID(models.PrimaryKeysBasketProducts) (models.BasketProduct, error)
+	GetList(models.GetListRequestBasketProducts) (models.BasketProductsResponse, error)
+	Update(models.BasketProduct) (models.BasketProduct, error)
+	Delete(models.PrimaryKeysBasketProducts) error
+}

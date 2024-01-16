@@ -81,3 +81,4 @@ func (c Controller) Delete(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
 	w.Write([]byte(`this is delete` + id))
 }
+

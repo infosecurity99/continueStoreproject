@@ -50,9 +50,9 @@ func (s Store) Basket() storage.IBasketsStorage {
 
 	return newBasket
 }
-/*
-func (s Store) BasketProducts() storage.IBasketProductsStorage {
+
+func (s Store) BasketProduct() storage.IBasketProductsStorage {
 	newBasketProducts := NewBasketProductRepo(s.DB)
 
 	return newBasketProducts
-}*/
+}
